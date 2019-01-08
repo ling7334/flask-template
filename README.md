@@ -14,7 +14,7 @@ Help wanted!
 
 # Contributing
 Help wanted!  
-Code of conduct not set yet.
+[Code of conduct](CODE_OF_CONDUCT.md) will not be applied.
 
 # License
 [MIT](LICENSE)
