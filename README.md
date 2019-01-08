@@ -1,13 +1,14 @@
 # flask-template
-> A flask scaffold template
+> A flask scaffold template which used for further development with flask project.
 
-Used for further development with flask project.  
-Basic login and user management function.
+This scaffold template demonstrate a combine use of `Pluggable Views`, `Blueprints` and `Factories`.  
+Most of the features available in 0.7 or later of Flask.  
+This scaffold template implement basic login and user management function.
 
 #  Requirement
-* flask
-* sqlachemy
-* flask-sqlachemy
+* flask >= 1.0.2
+* sqlachemy >= 1.2.15
+* flask-sqlachemy >= 2.3.2
 
 # Documentation
 Help wanted!
