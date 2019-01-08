@@ -102,3 +102,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# sqlite file
+*.db
+*.sqlite3
+
+# Pipenv lock file
+Pipfile.lock
