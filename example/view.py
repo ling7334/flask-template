@@ -4,6 +4,7 @@ from flask.views import MethodView
 
 from app import db
 from models import User, Session
+from util.decorators import user_required
 
 def index():
     return 'hello world'
@@ -41,6 +42,8 @@ class LoginAPI(MethodView):
                 'code': 'LoginFailed',
                 'msg': 'User is inactive.',
             }), 400
+        # Delete all session this user used before
+        db.session.query(Session).filter_by(user_id=user.id).delete()
         NOW = datetime.datetime.now()
         session_key = hashlib.sha256((str(user.id) + user.username + str(NOW.timestamp())).encode()).hexdigest()
         user_session = Session(session_key,user.id)
@@ -53,3 +56,22 @@ class LoginAPI(MethodView):
             'code': 'Success',
             'msg': 'Successfully login.',
         })
+
+class LogoutAPI(MethodView):
+
+    decorators = [user_required]
+
+    def get(self):
+        user_token = session.pop('user_token')
+        if user_token:
+            user_session = db.session.query(Session).filter_by(session_key=user_token).first()
+            user_session.expire_at = datetime.datetime.now()
+            db.session.commit()
+            return jsonify({
+                'code': 'Success',
+                'msg': 'Successfully logout.',
+            })
+        return jsonify({
+            'code': 'LogoutFailed',
+            'msg': 'Invalid token.',
+        }), 400

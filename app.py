@@ -9,7 +9,7 @@ from logging.config import dictConfig
 dictConfig({
     'version': 1,
     'formatters': {'default': {
-        'format': '''<%(asctime)s>  %(levelname)-8s in '%(pathname)s:%(lineno)d': %(message)s''',
+        'format': '''<%(asctime)s> - [%(levelname)s] @ '%(pathname)s:%(lineno)d': %(message)s''',
     }},
     'handlers': {'wsgi': {
         'class': 'logging.StreamHandler',
@@ -73,6 +73,7 @@ def create_app(test_config=None):
     import example
     app.add_url_rule('/', 'index', example.index)
     app.add_url_rule('/login', view_func=example.LoginAPI.as_view('login'))
+    app.add_url_rule('/logout', view_func=example.LogoutAPI.as_view('logout'))
 
     import admin
     app.register_blueprint(admin.adminBlueprint, url_prefix='/admin')

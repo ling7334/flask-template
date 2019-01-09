@@ -54,7 +54,7 @@ class UserAPI(MethodView):
                 'msg': 'Account created.'
             }), 201
         except Exception as err:
-            current_app.logger.error(traceback.format_exc())
+            current_app.logger.exception("Unexpected error.")
             return jsonify({
                 "code": err.__class__.__name__,
                 "msg": "Fail to create account.",

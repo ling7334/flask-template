@@ -1,1 +1,1 @@
-from .view import index, LoginAPI
+from .view import index, LoginAPI, LogoutAPI
