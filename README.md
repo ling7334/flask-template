@@ -1,4 +1,6 @@
 # flask-template
+[![travis](https://travis-ci.com/ling7334/flask-template.svg?branch=master)](https://travis-ci.com/ling7334/flask-template)
+[![codecov](https://codecov.io/gh/ling7334/flask-template/branch/master/graph/badge.svg)](https://codecov.io/gh/ling7334/flask-template)
 > A flask scaffold template which used for further development with flask project.
 
 This scaffold template demonstrate a combine use of `Pluggable Views`, `Blueprints` and `Factories`.  
