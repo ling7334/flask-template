@@ -15,7 +15,7 @@ Help wanted!
 
 # Contributing
 Help wanted!  
-[Code of conduct](CODE_OF_CONDUCT.md) will not be applied.
+[Code of conduct](.github/CODE_OF_CONDUCT.md) will not be applied.
 
 # License
 [MIT](LICENSE)
