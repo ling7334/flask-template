@@ -8,6 +8,7 @@ Please, don't use the issue tracker for this. Use one of the following
 resources for questions about your own code:
 
 * [e-mail](mailto:ling7334@gmail.com)
+* [slack](https://join.slack.com/t/ling7334/shared_invite/enQtNTIxMDYyNzc0NzU4LWM2YWI4ZjhlMmI4MjIyYTkxMDUxY2JmNjVhMDlkZmUwZDdhNWUxYzUyNDJjMGMzMDgwYWY3ZDRjMmY3ZmMwODM)
 
 ## Reporting issues
 
