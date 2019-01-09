@@ -6,22 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from logging.config import dictConfig
 
 
-dictConfig({
-    'version': 1,
-    'formatters': {'default': {
-        'format': '''<%(asctime)s> - [%(levelname)s] @ '%(pathname)s:%(lineno)d': %(message)s''',
-    }},
-    'handlers': {'wsgi': {
-        'class': 'logging.StreamHandler',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
-    }},
-    'root': {
-        'level': 'INFO',
-        'handlers': ['wsgi']
-    }
-})
-
 db = SQLAlchemy()
 
 def create_app(test_config=None):
@@ -35,7 +19,7 @@ def create_app(test_config=None):
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
-        app.config.from_json("developemnt.json")
+        app.config.from_object('config')
         app.config.update(SECRET_KEY=''.join(random.choice(string.ascii_letters+string.digits) for x in range(128)))
     else:
         # load the test config if passed in
