@@ -38,7 +38,7 @@ and [email](https://help.github.com/articles/setting-your-email-in-git/):
         git config --global user.email 'your email'
 
 - Make sure you have a [GitHub account](https://github.com/join).
-- Fork Flask-template to your GitHub account by clicking the [Fork](https://github.com/pallets/flask/fork) button.
+- Fork Flask-template to your GitHub account by clicking the [Fork](https://github.com/ling7334/flask-template/fork) button.
 - [Clone](https://help.github.com/articles/fork-a-repo/#step-2-create-a-local-clone-of-your-fork) your GitHub fork locally:
 
         git clone https://github.com/{username}/flask-template
@@ -46,7 +46,7 @@ and [email](https://help.github.com/articles/setting-your-email-in-git/):
 
 - Add the main repository as a remote to update later::
 
-        git remote add origin https://github.com/pallets/flask-template
+        git remote add origin https://github.com/ling7334/flask-template
         git fetch origin
 
 - Install `Pipenv`:
