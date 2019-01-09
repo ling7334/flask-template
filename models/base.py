@@ -1,4 +1,4 @@
-from app import db
+from flask_template.app import db
 
 
 class Base(db.Model):

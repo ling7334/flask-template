@@ -1,6 +1,6 @@
 import string, random, hashlib
 
-from app import db
+from flask_template.app import db
 from .base import Base
 
 

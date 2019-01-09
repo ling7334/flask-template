@@ -2,7 +2,7 @@ import traceback
 
 from flask import jsonify, current_app, request
 from flask.views import MethodView
-from app import db
+from flask_template.app import db
 from models import User
 
 from util.decorators import admin_required

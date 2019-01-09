@@ -2,7 +2,7 @@ import hashlib, datetime
 from flask import jsonify, request, session, current_app
 from flask.views import MethodView
 
-from app import db
+from flask_template.app import db
 from models import User, Session
 from util.decorators import user_required
 

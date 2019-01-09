@@ -1,5 +1,5 @@
 import datetime
-from app import db
+from flask_template.app import db
 from flask import current_app
 
 class Session(db.Model):
