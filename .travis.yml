@@ -2,6 +2,7 @@ language: python
 python:
   - "3.6"
   - "3.6-dev"
+  - "3.7"
   - "3.7-dev"
   - "nightly"
 
@@ -15,9 +16,11 @@ install:
   - pip install pytest
   - pip install pytest-cov
   - pip install codecov
+  - pip install codacy-coverage
 
 script:
   - coverage run -m pytest
 
 after_success:
   - codecov
+  - python-codacy-coverage -r coverage.xml
