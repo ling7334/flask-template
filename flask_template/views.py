@@ -73,5 +73,5 @@ class LogoutAPI(MethodView):
             })
         return jsonify({
             'code': 'LogoutFailed',
-            'msg': 'Invalid token.',
+            'msg': 'Token reuqired.',
         }), 400
