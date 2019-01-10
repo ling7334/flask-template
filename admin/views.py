@@ -20,7 +20,7 @@ class UserAPI(MethodView):
         elif arg_email:
             user = db.session.query(User).filter_by(email=arg_email).first()
         else:
-            current_app.logger.warn("ArgumnetError: %s", request.args)
+            current_app.logger.warning("ArgumnetError: %s", request.args)
             return jsonify({
                 'code': 'ArgumnetError',
                 'msg': 'At least one of (id, username, email) should be supplied.'
@@ -32,7 +32,7 @@ class UserAPI(MethodView):
                 'msg': 'User founded.',
                 'data': user.serialize
             })
-        current_app.logger.warn("User not founded: %s", request.args)
+        current_app.logger.warning("User not founded: %s", request.args)
         return jsonify({
             'code': 'NotFound',
             'msg': 'User not founded.',
@@ -70,7 +70,7 @@ class UserAPI(MethodView):
         elif arg_email:
             user = db.session.query(User).filter_by(email=arg_email).first()
         else:
-            current_app.logger.warn("ArgumnetError: %s", request.args)
+            current_app.logger.warning("ArgumnetError: %s", request.args)
             return jsonify({
                 'code': 'ArgumnetError',
                 'msg': 'At least one of (id, username, email) should be supplied.'
@@ -84,7 +84,7 @@ class UserAPI(MethodView):
                 'msg': 'User deleted.',
                 'data': user.serialize
             }), 204
-        current_app.logger.warn("User not founded: %s", request.args)
+        current_app.logger.warning("User not founded: %s", request.args)
         return jsonify({
             'code': 'NotFound',
             'msg': 'User not founded.',

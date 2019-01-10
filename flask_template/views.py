@@ -17,27 +17,27 @@ class LoginAPI(MethodView):
             arg_username = request.json['username']
             arg_password = request.json['password']
         except Exception:
-            current_app.logger.warn("ArgumnetError: %s", request.args)
+            current_app.logger.warning("ArgumnetError: %s", request.args)
             return jsonify({
                 'code': 'ArgumnetError',
                 'msg': 'username and password must be supplied.'
             }), 400
         user = db.session.query(User).filter_by(username=arg_username).first()
         if not user:
-            current_app.logger.warn("User not founded: %s", request.args)
+            current_app.logger.warning("User not founded: %s", request.args)
             return jsonify({
                 'code': 'LoginFailed',
                 'msg': 'Incorrect username or password.',
             }), 400
         hash_password = hashlib.sha256((arg_password+user.salt).encode()).hexdigest()
         if hash_password != user.password:
-            current_app.logger.warn("Incorrect password: %s", request.args)
+            current_app.logger.warning("Incorrect password: %s", request.args)
             return jsonify({
                 'code': 'LoginFailed',
                 'msg': 'Incorrect username or password.',
             }), 400
         if not user.active:
-            current_app.logger.warn("Inactive user: %s", user)
+            current_app.logger.warning("Inactive user: %s", user)
             return jsonify({
                 'code': 'LoginFailed',
                 'msg': 'User is inactive.',
