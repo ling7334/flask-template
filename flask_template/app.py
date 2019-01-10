@@ -20,11 +20,15 @@ def create_app(test_config=None):
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_object('config')
-        app.config.update(SECRET_KEY=''.join(random.choice(string.ascii_letters+string.digits) for x in range(128)))
+        # generate SECRET_KEY if not exist
+        if not app.config.get('SECRET_KEY'):
+            app.config.update(SECRET_KEY=''.join(random.choice(string.ascii_letters+string.digits) for x in range(128)))
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)
-        app.config.update(SECRET_KEY=''.join(random.choice(string.ascii_letters+string.digits) for x in range(128)))
+        # generate SECRET_KEY if not exist
+        if not app.config.get('SECRET_KEY'):
+            app.config.update(SECRET_KEY=''.join(random.choice(string.ascii_letters+string.digits) for x in range(128)))
 
     # ensure the instance folder exists
     try:
@@ -54,10 +58,11 @@ def create_app(test_config=None):
         g.pop('user', None)
         # app.logger.info("appcontext closed")
 
-    import example
-    app.add_url_rule('/', 'index', example.index)
-    app.add_url_rule('/login', view_func=example.LoginAPI.as_view('login'))
-    app.add_url_rule('/logout', view_func=example.LogoutAPI.as_view('logout'))
+    # Register endpoints
+    from .views import (Index, LoginAPI, LogoutAPI)
+    app.add_url_rule('/', 'index', Index)
+    app.add_url_rule('/login', view_func=LoginAPI.as_view('login'))
+    app.add_url_rule('/logout', view_func=LogoutAPI.as_view('logout'))
 
     import admin
     app.register_blueprint(admin.adminBlueprint, url_prefix='/admin')
