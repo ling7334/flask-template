@@ -3,9 +3,6 @@ import os, string, random, datetime
 from flask import Flask, session, g
 from flask_sqlalchemy import SQLAlchemy
 
-from logging.config import dictConfig
-
-
 db = SQLAlchemy()
 
 def create_app(test_config=None):
@@ -59,12 +56,12 @@ def create_app(test_config=None):
         # app.logger.info("appcontext closed")
 
     # Register endpoints
-    from .views import (Index, LoginAPI, LogoutAPI)
-    app.add_url_rule('/', 'index', Index)
+    from .views import (index, LoginAPI, LogoutAPI)
+    app.add_url_rule('/', 'index', index)
     app.add_url_rule('/login', view_func=LoginAPI.as_view('login'))
     app.add_url_rule('/logout', view_func=LogoutAPI.as_view('logout'))
 
     import admin
-    app.register_blueprint(admin.adminBlueprint, url_prefix='/admin')
+    app.register_blueprint(admin.admin_blueprint, url_prefix='/admin')
 
     return app

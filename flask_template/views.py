@@ -6,7 +6,7 @@ from flask_template.app import db
 from models import User, Session
 from util.decorators import user_required
 
-def Index():
+def index():
     return 'hello world'
 
 
