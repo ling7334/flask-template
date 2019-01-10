@@ -16,7 +16,7 @@ class LoginAPI(MethodView):
         try:
             arg_username = request.json['username']
             arg_password = request.json['password']
-        except:
+        except Exception:
             current_app.logger.warn("ArgumnetError: %s", request.args)
             return jsonify({
                 'code': 'ArgumnetError',

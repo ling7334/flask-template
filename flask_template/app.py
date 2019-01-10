@@ -1,6 +1,6 @@
 import os, string, random, datetime
 
-from flask import Flask, jsonify, session, g
+from flask import Flask, session, g
 from flask_sqlalchemy import SQLAlchemy
 
 from logging.config import dictConfig
@@ -49,7 +49,7 @@ def create_app(test_config=None):
                     user_session = db.session.query(Session).filter_by(session_key=session['user_token']).first()
                     if user_session.expire_at > datetime.datetime.now():
                         g.user = user_session.user
-                except:
+                except Exception:
                     app.logger.exception("Could not find user")
 
     @app.teardown_appcontext
